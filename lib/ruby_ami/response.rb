@@ -15,8 +15,8 @@ module RubyAMI
     end
 
     attr_accessor :action,
-                  :text_body  # For "Response: Follows" sections
-    attr_reader   :events
+                  :text_body, # For "Response: Follows" sections
+                  :events
 
     def initialize
       @headers = Hash.new

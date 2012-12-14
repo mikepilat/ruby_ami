@@ -99,7 +99,10 @@ module RubyAMI
         @event_lock.synchronize do
           @events << message
         end
-        self.response = @pending_response if message.name.downcase == causal_event_terminator_name
+        if message.name.downcase == causal_event_terminator_name
+            @pending_response.events = @events
+              self.response = @pending_response
+        end
       when Response
         if has_causal_events?
           @pending_response = message
